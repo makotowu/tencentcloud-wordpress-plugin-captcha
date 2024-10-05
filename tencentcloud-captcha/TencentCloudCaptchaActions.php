@@ -218,7 +218,7 @@ class TencentCloudCaptchaActions
         if (is_single() || is_paged()) {
             wp_register_script('codeVerify_front_user_script', TENCENT_WORDPRESS_CAPTCHA_JS_DIR . 'tencent_cloud_captcha_user.js', array('jquery'), '2.1', true);
             wp_enqueue_script('codeVerify_front_user_script');
-            wp_register_script('TCaptcha', 'https://ssl.captcha.qq.com/TCaptcha.js', array('jquery'), '2.1', true);
+            wp_register_script('TCaptcha', 'https://turing.captcha.qcloud.com/TCaptcha.js', array('jquery'), '2.1', true);
             wp_enqueue_script('TCaptcha');
         }
     }
@@ -237,7 +237,7 @@ class TencentCloudCaptchaActions
         wp_enqueue_script('codeVerify_front_user_script');
         wp_register_script('codeVerify_back_admin_script', TENCENT_WORDPRESS_CAPTCHA_JS_DIR . 'tencent_cloud_captcha_admin.js', array('jquery'), '2.1', true);
         wp_enqueue_script('codeVerify_back_admin_script');
-        wp_register_script('TCaptcha', 'https://ssl.captcha.qq.com/TCaptcha.js', array('jquery'), '2.1', true);
+        wp_register_script('TCaptcha', 'https://turing.captcha.qcloud.com/TCaptcha.js', array('jquery'), '2.1', true);
         wp_enqueue_script('TCaptcha');
 
     }
