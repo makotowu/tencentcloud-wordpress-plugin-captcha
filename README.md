@@ -13,7 +13,7 @@
 | -------- | ------------------------------------------------------------ |
 | 中文名称 | 腾讯云验证码（CAPTCHA）插件                                  |
 | 英文名称 | tencentcloud-captcha                                         |
-| 最新版本 | v1.0.2 (2021.8.20)                                           |
+| 最新版本 | v1.0.4 (2024.11.24)                                           |
 | 适用平台 | [WordPress](https://wordpress.org/)                          |
 | 适用产品 | [腾讯云验证码](https://cloud.tencent.com/document/product/1110/36334) |
 | 文档中心 | [春雨文档中心](https://openapp.qq.com/docs/Wordpress/captcha.html) |
