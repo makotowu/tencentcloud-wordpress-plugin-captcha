@@ -323,9 +323,8 @@ $lostpasswordCodeKey = esc_attr($codeVerifySettings['captcha_lostpassword_app_ke
         </div>
     </div>
     <div style="text-align: center;padding-top:56px">
-        <a href="https://openapp.qq.com/docs/Wordpress/captcha.html" target="_blank">文档中心</a>
-        | <a href="https://github.com/Tencent-Cloud-Plugins/tencentcloud-wordpress-plugin-captcha" target="_blank">GitHub</a>
-        | <a href="https://gitee.com/Tencent-Cloud-Plugins/tencentcloud-wordpress-plugin-captcha" target="_blank">Gitee</a>
-        | <a href="https://da.do/y0rp" target="_blank">意见反馈</a>
+        <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/blob/master/README.md" target="_blank">文档中心</a>
+        | <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha" target="_blank">CNB</a>
+        | <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/issues" target="_blank">意见反馈</a>
     </div>
 </div>
