@@ -5,7 +5,7 @@
  * Description: 通过腾讯云验证码提供立体、全面的人机验证。
  * Version: 1.0.4
  * Author: 腾讯云&makotowu
- * Author URI: https://www.tencent.com/ https://cnb.cool/u/makotowu
+ * Author URI: https://cnb.cool/u/makotowu
  * Copyright (C) 2020 Tencent Cloud.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
