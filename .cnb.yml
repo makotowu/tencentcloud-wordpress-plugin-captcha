@@ -1,3 +1,4 @@
+# .cnb.yml
 main:
   push:
     - imports: https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha-secret/-/blob/main/env.yml
@@ -9,3 +10,4 @@ main:
             auth_type: https
             username: ${GIT_USERNAME}
             password: ${GIT_ACCESS_TOKEN}
+            sync_mode: rebase
