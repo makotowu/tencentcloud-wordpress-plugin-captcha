@@ -1,11 +1,11 @@
-$:
-  # vscode 事件：专供页面中启动远程开发用
-  vscode:
-    - docker:
-        # 自定义镜像作为开发环境
-        image: cnbcool/default-dev-env:latest
-      services:
-        - vscode
-        - docker
-      runner :
-        cpus: 1
+main:
+  push:
+    - imports: https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha-secret/-/blob/main/env.yml
+      stages:
+        - name: sync to github
+          image: tencentcom/git-sync
+          settings:
+            target_url: https://github.com/makotowu/tencentcloud-wordpress-plugin-captcha.git
+            auth_type: https
+            username: ${GIT_USERNAME}
+            password: ${GIT_ACCESS_TOKEN}
