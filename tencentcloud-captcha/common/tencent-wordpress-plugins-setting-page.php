@@ -158,22 +158,6 @@ function tencent_wordpress_plugin_common_page() {
                                             </div>
                                         </div>
 
-                                        <!-- Setting Option no_local_file-->
-                                        <div class="row form-group">
-                                            <label class="col-form-label col-lg-2 lable_padding_left" for="inputDefault">参与体验优化项目</label>
-                                            <div class="custom-control custom-switch div_custom_switch_padding_top">
-                                                <input name="customize_optimize_project" type="checkbox" class="custom-control-input" id="customize_optimize_project_checkbox_id"
-                                                    <?php
-                                                    if (isset($tencent_wordpress_common_options)
-                                                        && isset($tencent_wordpress_common_options['site_report_on'])
-                                                        && $tencent_wordpress_common_options['site_report_on'] === true) {
-                                                        echo 'checked="true"';
-                                                    }
-                                                    ?>
-                                                >
-                                                <label class="custom-control-label" for="customize_optimize_project_checkbox_id">允许腾讯云采集必要的插件启用数据用于优化提升产品体验</label>
-                                            </div>
-                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -235,17 +219,10 @@ function tencent_wordpress_plugin_common_page() {
                 var secret_id = $('#input_twp_common_secret_id').val();
                 var secret_key = $('#input_twp_common_secret_key').val();
                 var site_secret_on
-                var site_report_on
                 if ($('#tencent_wordpress_common_secret_checkbox_id').get(0).checked === false) {
                     site_secret_on = false;
                 } else {
                     site_secret_on = true;
-                }
-
-                if ($('#customize_optimize_project_checkbox_id').get(0).checked === false) {
-                    site_report_on = false;
-                } else {
-                    site_report_on = true;
                 }
 
                 if (!secret_key || !secret_id) {
@@ -261,8 +238,7 @@ function tencent_wordpress_plugin_common_page() {
                         action: "save_tencent_wordpress_common_options",
                         secret_id: secret_id,
                         secret_key:secret_key,
-                        site_secret_on:site_secret_on,
-                        site_report_on:site_report_on
+                        site_secret_on:site_secret_on
                     },
                     success: function(response) {
                         if (response.success){

@@ -1,10 +1,10 @@
 === 腾讯云验证码 （CAPTCHA） ===
 
-Contributors: Tencent
+Contributors: Tencent, makotowu
 Tags:tencent,tencentcloud,qcloud,春雨,腾讯云CAPTCHA,腾讯云验证码,腾讯云,验证码
 Requires at least: 5.5
 Tested up to: 5.8
-Stable tag: 1.0.2
+Stable tag: 1.0.5
 License:Apache 2.0
 License URI:http://www.apache.org/licenses/LICENSE-2.0
 
@@ -20,7 +20,7 @@ License URI:http://www.apache.org/licenses/LICENSE-2.0
 * 4、支持忘记密码表单增加验证码；
 * 5、支持场景自定义
 
-本项目由腾讯云中小企业产品中心建设和维护，了解与该插件使用相关的更多信息，请访问[春雨文档中心](https://openapp.qq.com/docs/Wordpress/captcha.html)
+原插件由腾讯云建设，现由社区维护。了解与该插件使用相关的更多信息，请访问[春雨文档中心](https://openapp.qq.com/docs/Wordpress/captcha.html)
 
 请通过[咨询建议](https://txc.qq.com/)向我们提交宝贵意见。
 
@@ -28,7 +28,7 @@ License URI:http://www.apache.org/licenses/LICENSE-2.0
 
 * 1、把tencentcloud-captcha文件夹上传到/wp-content/plugins/目录下<br />
 * 2、在后台插件列表中激活腾讯云验证码插件<br />
-* 3、在"设置""菜单中输入腾讯云验证码相关参数信息<br />
+* 3、在后台「腾讯云设置」→「验证码」中配置相关参数<br />
 
 == Frequently Asked Questions ==
 
@@ -42,6 +42,11 @@ License URI:http://www.apache.org/licenses/LICENSE-2.0
 5. screenshot-5.png
 
 == Changelog ==
+= 1.0.5 =
+* 1、新增主题适配机制（Theme Adapters），用于处理自定义评论表单、AJAX 提交、PJAX 导航等场景
+* 2、新增 Oyiso 主题适配：评论验证码支持 PJAX / History 导航与自定义评论表单提交流程
+* 3、移除用户体验数据上报相关逻辑与后台开关
+
 = 1.0.2 =
 * 1、最高支持PHP8版本，并兼容WordPress5.8
 * 2、新增本地调试日志功能

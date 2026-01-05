@@ -28,5 +28,3 @@ TencentWordpressPluginsSettingActions::deleteTencentWordpressPlugin(TENCENT_WORD
 if (get_option('tencent_wordpress_captcha_options')) {
     delete_option( 'tencent_wordpress_captcha_options' );
 }
-$staticData = TencentCloudCaptchaActions::getTencentCloudWordPressStaticData('deactivate');
-TencentWordpressPluginsSettingActions::SendUserExperienceInfo($staticData);

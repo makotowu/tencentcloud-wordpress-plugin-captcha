@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+ * Copyright (c) 2017 Tencent. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,6 +77,16 @@ class HttpProfile
     private $proxy;
 
     /**
+     * @var string
+     */
+    private $rootDomain;
+
+    /**
+     * @var boolean
+     */
+    private $keepAlive;
+
+    /**
      * HttpProfile constructor.
      * @param string $protocol  请求协议
      * @param string $endpoint  请求接入点域名(xx.[region.]tencentcloudapi.com)
@@ -89,6 +99,8 @@ class HttpProfile
         $this->endpoint = $endpoint;
         $this->reqTimeout = $reqTimeout ? $reqTimeout : HttpProfile::$TM_MINUTE;
         $this->protocol = $protocol ? $protocol : HttpProfile::$REQ_HTTPS;
+        $this->rootDomain = "tencentcloudapi.com";
+        $this->keepAlive = false;
     }
 
     /**
@@ -178,5 +190,26 @@ class HttpProfile
     public function getProxy()
     {
         return $this->proxy;
+    }
+
+    public function setRootDomain($domain)
+    {
+        $this->rootDomain = $domain;
+    }
+
+    public function getRootDomain()
+    {
+        return $this->rootDomain;
+    }
+
+    /**
+     * @param boolean $flag
+     */
+    public function setKeepAlive($flag) {
+        $this->keepAlive = $flag;
+    }
+
+    public function getKeepAlive() {
+        return $this->keepAlive;
     }
 }

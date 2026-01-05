@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright (c) 2017-2018 THL A29 Limited, a Tencent company. All Rights Reserved.
+ * Copyright (c) 2017-2025 Tencent. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,8 @@ use TencentCloud\Common\AbstractModel;
  * @method void setStart(integer $Start) 设置查询开始时间
  * @method integer getType() 获取查询类型
  * @method void setType(integer $Type) 设置查询类型
+ * @method integer getEnd() 获取查询结束时间
+ * @method void setEnd(integer $End) 设置查询结束时间
  */
 class DescribeCaptchaOperDataRequest extends AbstractModel
 {
@@ -45,9 +47,15 @@ class DescribeCaptchaOperDataRequest extends AbstractModel
     public $Type;
 
     /**
+     * @var integer 查询结束时间
+     */
+    public $End;
+
+    /**
      * @param integer $CaptchaAppId 验证码应用ID
      * @param integer $Start 查询开始时间
      * @param integer $Type 查询类型
+     * @param integer $End 查询结束时间
      */
     function __construct()
     {
@@ -72,6 +80,10 @@ class DescribeCaptchaOperDataRequest extends AbstractModel
 
         if (array_key_exists("Type",$param) and $param["Type"] !== null) {
             $this->Type = $param["Type"];
+        }
+
+        if (array_key_exists("End",$param) and $param["End"] !== null) {
+            $this->End = $param["End"];
         }
     }
 }
