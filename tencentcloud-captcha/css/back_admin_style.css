@@ -1,7 +1,602 @@
-.txc-container{margin-top:1.2em}
-.fake_hyperlink {
-    color: #0000EE; text-decoration:none; cursor:pointer;
+.tcwp-console {
+	font-family: var(--tea-font-family-default, -apple-system, BlinkMacSystemFont, "pingfang SC", "Hiragina Sans GB", "Helvetica Neue", Helvetica, "microsoft yahei ui", "microsoft yahei", simsun, arial, sans-serif);
+	color: var(--tea-color-text-primary, #1f2329);
 }
-.fake_hyperlink:hover{
-    text-decoration:underline;
+
+.tcwp-console a {
+	color: var(--tea-color-text-link-default, #006eff);
+	text-decoration: none;
+}
+
+.tcwp-console a:hover {
+	color: var(--tea-color-text-link-hover, #0052d9);
+	text-decoration: none;
+}
+
+.tcwp-console .page-header h1,
+.tcwp-console h1 {
+	font-size: var(--tea-font-size-7, 20px);
+	line-height: var(--tea-font-line-height-7, 28px);
+	font-weight: var(--tea-font-weight-medium, 600);
+	margin: 0 0 6px;
+}
+
+.tcwp-console h5 {
+	font-size: var(--tea-font-size-4, 14px);
+	line-height: var(--tea-font-line-height-4, 20px);
+	font-weight: var(--tea-font-weight-medium, 600);
+	margin: 0;
+}
+
+.tcwp-console p {
+	color: var(--tea-color-text-secondary, #4e5969);
+}
+
+.tcwp-console button,
+.tcwp-console input {
+	overflow: visible;
+}
+
+.tcwp-console button,
+.tcwp-console select {
+	text-transform: none;
+}
+
+.tcwp-console button,
+.tcwp-console [type="button"],
+.tcwp-console [type="reset"],
+.tcwp-console [type="submit"] {
+	appearance: button;
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+.tcwp-console [disabled] {
+	cursor: default;
+}
+
+.tcwp-console [type="checkbox"],
+.tcwp-console [type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.tcwp-console hr {
+	padding: 0;
+	border: none;
+	border-bottom: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	margin: 20px 0;
+}
+
+.tcwp-console fieldset {
+	min-width: 0;
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+.tcwp-console legend {
+	padding: 0;
+}
+
+.tcwp-console .hidden {
+	display: none;
+}
+
+.tcwp-console .nav {
+	display: flex;
+	flex-wrap: wrap;
+	padding-left: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.tcwp-console .nav-link {
+	display: block;
+	text-decoration: none;
+}
+
+.tcwp-console .tab-content > .tab-pane {
+	display: none;
+}
+
+.tcwp-console .tab-content > .active {
+	display: block;
+}
+
+.tcwp-console .fade {
+	opacity: 0;
+	transition: opacity 0.15s linear;
+}
+
+.tcwp-console .fade.show {
+	opacity: 1;
+}
+
+.tcwp-console .row {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
+}
+
+.tcwp-console .row > [class*="col-"] {
+	box-sizing: border-box;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.tcwp-console .form-group {
+	display: flex;
+	flex-wrap: wrap;
+	margin-right: -10px;
+	margin-left: -10px;
+	margin-bottom: 12px;
+}
+
+.tcwp-console .form-group > [class*="col-"] {
+	box-sizing: border-box;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+@media (min-width: 992px) {
+	.tcwp-console .col-lg-1 {
+		flex: 0 0 8.333333%;
+		max-width: 8.333333%;
+	}
+
+	.tcwp-console .col-lg-2 {
+		flex: 0 0 16.666667%;
+		max-width: 16.666667%;
+	}
+
+	.tcwp-console .col-lg-4 {
+		flex: 0 0 33.333333%;
+		max-width: 33.333333%;
+	}
+
+	.tcwp-console .col-lg-5 {
+		flex: 0 0 41.666667%;
+		max-width: 41.666667%;
+	}
+
+	.tcwp-console .col-lg-9 {
+		flex: 0 0 75%;
+		max-width: 75%;
+	}
+
+	.tcwp-console .col-lg-12 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	.tcwp-console .offset-lg-2 {
+		margin-left: 16.666667%;
+	}
+}
+
+@media (max-width: 991.98px) {
+	.tcwp-console [class*="col-lg-"] {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+
+	.tcwp-console .offset-lg-2 {
+		margin-left: 0;
+	}
+}
+
+.tcwp-console .my-4 {
+	margin-top: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.tcwp-console .col-form-label {
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+.tcwp-console .invalid-feedback {
+	display: block;
+	width: 100%;
+	margin-top: 4px;
+	color: var(--tea-color-text-error-default, #d54941);
+	font-size: 12px;
+}
+
+.tcwp-console .is-invalid {
+	border-color: var(--tea-color-border-error-default, #d54941);
+}
+
+.tcwp-console .wrap {
+	padding: 12px 0 0;
+}
+
+.tcwp-console .postbox {
+	background: var(--tea-color-bg-container-default, #ffffff);
+	border: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	border-radius: var(--tea-border-radius, 6px);
+	box-shadow: var(--tea-shadow-default, 0px 1px 2px rgba(0, 0, 0, 0.04));
+}
+
+.tcwp-console .postbox .inside {
+	padding: 16px 20px;
+	margin: 0;
+}
+
+.tcwp-console .nav-tabs {
+	border-bottom: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+}
+
+.tcwp-console .nav-tabs .nav-link {
+	border: none;
+	border-radius: 0;
+	padding: 10px 12px;
+	color: var(--tea-color-text-secondary, #4e5969);
+	background: transparent;
+}
+
+.tcwp-console .nav-tabs .nav-link:hover {
+	color: var(--tea-color-text-primary, #1f2329);
+	background: var(--tea-color-bg-secondarycontainer-hover, rgba(0, 0, 0, 0.03));
+}
+
+.tcwp-console .nav-tabs .nav-link.active {
+	color: var(--tea-color-text-primary, #1f2329);
+	background: transparent;
+	position: relative;
+}
+
+.tcwp-console .nav-tabs .nav-link.active::after {
+	content: "";
+	position: absolute;
+	left: 12px;
+	right: 12px;
+	bottom: -1px;
+	height: 2px;
+	background: var(--tea-color-border-brand-default, #006eff);
+}
+
+.tcwp-console .btn,
+.tcwp-console .button {
+	height: var(--tea-form-height, 30px);
+	line-height: calc(var(--tea-form-height, 30px) - 2px);
+	padding: 0 12px;
+	border-radius: var(--tea-border-radius, 6px);
+	border: 1px solid var(--tea-color-border-primary-default, #dcdfe6);
+	background: var(--tea-color-bg-form-default, #ffffff);
+	color: var(--tea-color-text-primary, #1f2329);
+	box-shadow: none;
+	text-decoration: none;
+}
+
+.tcwp-console .btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.tcwp-console .btn:hover {
+	text-decoration: none;
+}
+
+.tcwp-console .btn:hover,
+.tcwp-console .button:hover {
+	background: var(--tea-color-bg-form-hover, #f5f7fa);
+	text-decoration: none;
+}
+
+.tcwp-console .btn:focus,
+.tcwp-console .button:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px var(--tea-color-bg-brand-focus, rgba(0, 110, 255, 0.2));
+	text-decoration: none;
+}
+
+.tcwp-console .btn.btn-primary {
+	background: var(--tea-color-bg-brand-default, #006eff);
+	border-color: var(--tea-color-bg-brand-default, #006eff);
+	color: var(--tea-color-text-on-bg-brand-default, #ffffff);
+	text-decoration: none;
+}
+
+.tcwp-console .btn.btn-primary:hover {
+	background: var(--tea-color-bg-brand-hover, #0052d9);
+	border-color: var(--tea-color-bg-brand-hover, #0052d9);
+}
+
+.tcwp-console .button.button-primary {
+	background: var(--tea-color-bg-brand-default, #006eff);
+	border-color: var(--tea-color-bg-brand-default, #006eff);
+	color: var(--tea-color-text-on-bg-brand-default, #ffffff);
+	text-decoration: none;
+}
+
+.tcwp-console .button.button-primary:hover {
+	background: var(--tea-color-bg-brand-hover, #0052d9);
+	border-color: var(--tea-color-bg-brand-hover, #0052d9);
+	text-decoration: none;
+}
+
+.tcwp-console .button.button-secondary {
+	background: var(--tea-color-bg-form-default, #ffffff);
+	border-color: var(--tea-color-border-primary-default, #dcdfe6);
+	color: var(--tea-color-text-primary, #1f2329);
+	text-decoration: none;
+}
+
+.tcwp-console .button.button-secondary:hover {
+	background: var(--tea-color-bg-form-hover, #f5f7fa);
+	text-decoration: none;
+}
+
+.tcwp-console .tcwp-button-success {
+	background: var(--tea-color-bg-success-default, #00b42a);
+	border-color: var(--tea-color-bg-success-default, #00b42a);
+	color: var(--tea-color-text-on-bg-success-default, #ffffff);
+	text-decoration: none;
+}
+
+.tcwp-console .tcwp-button-success:hover {
+	background: var(--tea-color-bg-success-hover, #009a29);
+	border-color: var(--tea-color-bg-success-hover, #009a29);
+	text-decoration: none;
+}
+
+.tcwp-console .tcwp-button-success[disabled],
+.tcwp-console .tcwp-button-success:disabled {
+	opacity: 0.9;
+	text-decoration: none;
+}
+
+.tcwp-console .btn.btn-warning {
+	background: var(--tea-color-bg-warning-default, #ff9f1a);
+	border-color: var(--tea-color-bg-warning-default, #ff9f1a);
+	color: var(--tea-color-text-on-bg-warning-default, #ffffff);
+	text-decoration: none;
+}
+
+.tcwp-console .btn.btn-warning:hover {
+	background: var(--tea-color-bg-warning-hover, #e88600);
+	border-color: var(--tea-color-bg-warning-hover, #e88600);
+	text-decoration: none;
+}
+
+.tcwp-console input[type="text"],
+.tcwp-console input[type="password"],
+.tcwp-console input[type="number"],
+.tcwp-console input[type="email"],
+.tcwp-console select,
+.tcwp-console textarea {
+	background: var(--tea-color-bg-form-default, #ffffff);
+	border: 1px solid var(--tea-color-border-form-default, #dcdfe6);
+	border-radius: var(--tea-border-radius, 6px);
+	color: var(--tea-color-text-form-default, #1f2329);
+	padding: 0 10px;
+	min-height: var(--tea-form-height, 30px);
+	box-shadow: none;
+}
+
+.tcwp-console input[type="text"]:disabled,
+.tcwp-console input[type="password"]:disabled,
+.tcwp-console input[type="number"]:disabled,
+.tcwp-console input[type="email"]:disabled,
+.tcwp-console select:disabled,
+.tcwp-console textarea:disabled,
+.tcwp-console input[type="text"][disabled],
+.tcwp-console input[type="password"][disabled],
+.tcwp-console input[type="number"][disabled],
+.tcwp-console input[type="email"][disabled],
+.tcwp-console select[disabled],
+.tcwp-console textarea[disabled] {
+	background: var(--tea-color-bg-form-disabled, #f5f7fa);
+	border-color: var(--tea-color-border-primary-default, #dcdfe6);
+	color: var(--tea-color-text-disabled, #86909c);
+	-webkit-text-fill-color: var(--tea-color-text-disabled, #86909c);
+	opacity: 1;
+	cursor: not-allowed;
+	box-shadow: none;
+}
+
+.tcwp-console textarea {
+	padding: 8px 10px;
+}
+
+.tcwp-console input[type="text"]:focus,
+.tcwp-console input[type="password"]:focus,
+.tcwp-console input[type="number"]:focus,
+.tcwp-console input[type="email"]:focus,
+.tcwp-console select:focus,
+.tcwp-console textarea:focus {
+	border-color: var(--tea-color-border-form-focus, #006eff);
+	box-shadow: 0 0 0 2px var(--tea-color-bg-brand-focus, rgba(0, 110, 255, 0.2));
+	outline: none;
+}
+
+.tcwp-console .custom-control {
+	position: relative;
+	min-height: 22px;
+}
+
+.tcwp-console .custom-control.custom-switch {
+	padding-left: 0;
+}
+
+.tcwp-console .custom-control-input {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.tcwp-console .custom-control-label {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	min-height: 22px;
+	padding-left: 44px;
+	cursor: pointer;
+	color: var(--tea-color-text-primary, #1f2329);
+}
+
+.tcwp-console .custom-control-label::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 36px;
+	height: 20px;
+	border-radius: 999px;
+	border: 1px solid var(--tea-color-border-primary-default, #dcdfe6);
+	background: var(--tea-color-bg-secondarycontainer-default, #f5f7fa);
+	transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	box-sizing: border-box;
+}
+
+.tcwp-console .custom-control-label::after {
+	content: "";
+	position: absolute;
+	left: 2px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 16px;
+	height: 16px;
+	border-radius: 999px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+	transition: transform 0.15s ease-in-out;
+}
+
+.tcwp-console .custom-control-input:checked ~ .custom-control-label::before {
+	background: var(--tea-color-bg-brand-default, #006eff);
+	border-color: var(--tea-color-bg-brand-default, #006eff);
+}
+
+.tcwp-console .custom-control-input:checked ~ .custom-control-label::after {
+	transform: translateY(-50%) translateX(16px);
+}
+
+.tcwp-console .custom-control-input:focus ~ .custom-control-label::before {
+	box-shadow: 0 0 0 2px var(--tea-color-bg-brand-focus, rgba(0, 110, 255, 0.2));
+}
+
+.tcwp-console .custom-control-input:disabled ~ .custom-control-label {
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+.tcwp-console .alert {
+	border-radius: var(--tea-border-radius, 6px);
+	border: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	padding: 10px 12px;
+}
+
+.tcwp-console .alert-dismissible {
+	position: relative;
+	padding-right: 38px;
+}
+
+.tcwp-console .alert-success {
+	background: var(--tea-color-bg-success-lighten-default, rgba(0, 180, 42, 0.12));
+	border-color: var(--tea-color-bg-success-lighten-default, rgba(0, 180, 42, 0.12));
+	color: var(--tea-color-text-primary, #1f2329);
+}
+
+.tcwp-console .alert-danger {
+	background: var(--tea-color-bg-error-lighten-default, rgba(220, 38, 38, 0.12));
+	border-color: var(--tea-color-bg-error-lighten-default, rgba(220, 38, 38, 0.12));
+	color: var(--tea-color-text-primary, #1f2329);
+}
+
+.tcwp-console .alert .close {
+	position: absolute;
+	top: 10px;
+	right: 12px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+	background: transparent;
+	font-size: 16px;
+	line-height: 16px;
+	opacity: 0.6;
+}
+
+.tcwp-console .alert .close:hover {
+	opacity: 0.9;
+}
+
+.tcwp-console .form-table th {
+	padding: 14px 10px 14px 0;
+}
+
+.tcwp-console .form-table td {
+	padding: 12px 10px;
+}
+
+.tcwp-console .table {
+	background: var(--tea-color-bg-container-default, #ffffff);
+	border: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	border-radius: var(--tea-border-radius, 6px);
+	overflow: hidden;
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+}
+
+.tcwp-console .table thead th {
+	background: var(--tea-color-bg-primary-lighten, rgba(0, 0, 0, 0.02));
+	color: var(--tea-color-text-secondary, #4e5969);
+	border-bottom: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	font-weight: var(--tea-font-weight-medium, 600);
+	padding: 10px 12px;
+	text-align: left;
+}
+
+.tcwp-console .table td,
+.tcwp-console .table th {
+	border-top: 1px solid var(--tea-color-border-secondary-default, #e6e8eb);
+	padding: 10px 12px;
+	vertical-align: middle;
+}
+
+.tcwp-console .table tbody tr:first-child td,
+.tcwp-console .table tbody tr:first-child th {
+	border-top: none;
+}
+
+.tcwp-console .table-hover tbody tr:hover {
+	background: var(--tea-color-bg-secondarycontainer-hover, rgba(0, 0, 0, 0.03));
+}
+
+.tcwp-console .table a {
+	display: inline-block;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.tcwp-console .table a:hover {
+	text-decoration: underline;
+}
+
+.txc-container {
+	margin-top: 1.2em;
+}
+
+.fake_hyperlink {
+	color: var(--tea-color-text-link-default, #006eff);
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.fake_hyperlink:hover {
+	text-decoration: underline;
 }

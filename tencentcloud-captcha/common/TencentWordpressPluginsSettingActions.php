@@ -97,7 +97,18 @@ if (!class_exists('TencentWordpressPluginsSettingActions')) {
 
 		public static function tencent_wordpress_common_loadCssForPage()
 		{
-			wp_enqueue_style('codeVerify_admin_css', TENCENT_WORDPRESS_PLUGINS_COMMON_CSS_URL . 'bootstrap.min.css');
+			$consoleVer = defined('TENCENT_WORDPRESS_CAPTCHA_VERSION') ? TENCENT_WORDPRESS_CAPTCHA_VERSION : null;
+			if (defined('TENCENT_WORDPRESS_CAPTCHA_DIR') && is_file(TENCENT_WORDPRESS_CAPTCHA_DIR . 'css' . DIRECTORY_SEPARATOR . 'console-pack.css')) {
+				$mtime = @filemtime(TENCENT_WORDPRESS_CAPTCHA_DIR . 'css' . DIRECTORY_SEPARATOR . 'console-pack.css');
+				if ($mtime) {
+					$consoleVer = ($consoleVer ? $consoleVer . '.' : '') . strval($mtime);
+				}
+			}
+
+			if (defined('TENCENT_WORDPRESS_CAPTCHA_CSS_DIR')) {
+				wp_enqueue_style('tcwp_console_pack', TENCENT_WORDPRESS_CAPTCHA_CSS_DIR . 'console-pack.css', array(), $consoleVer);
+				wp_enqueue_style('tcwp_admin_style', TENCENT_WORDPRESS_CAPTCHA_CSS_DIR . 'back_admin_style.css', array('tcwp_console_pack'), $consoleVer);
+			}
 		}
 
 		/**
