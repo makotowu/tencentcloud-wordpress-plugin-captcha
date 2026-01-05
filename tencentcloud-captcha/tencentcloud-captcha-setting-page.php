@@ -61,303 +61,295 @@ $aidEncryptedExpire = esc_attr($codeVerifySettings['aid_encrypted_expire']) ?: '
 	}
 </style>
 
-<div class="row">
-	<div class="col-lg-12">
-		<div class="page-header ">
-			<h1 id="forms">腾讯云验证码（CAPTCHA）插件</h1>
+<div class="tcwp-console">
+	<div class="wrap">
+		<div class="alert alert-dismissible alert-success" style="display: none;">
+			<button type="button" id="codeVerify_close-ajax-return-msg" class="close" data-dismiss="alert">&times;</button>
+			<div id="codeVerify_show-ajax-return-msg">操作成功.</div>
 		</div>
-		<p>在登录、注册、找回密码、评论等场景下，增加人机校验</p>
-	</div>
-</div>
-
-<div class="wrap">
-	<div class="alert alert-dismissible alert-success" style="display: none;">
-		<button type="button" id="codeVerify_close-ajax-return-msg" class="close" data-dismiss="alert">&times;</button>
-		<div id="codeVerify_show-ajax-return-msg">操作成功.</div>
-	</div>
-	<div id="post-body">
-		<ul class="nav nav-tabs">
-			<li class="nav-item">
-				<a class="nav-link active" href="javascript:void(0);" id="sub-tab-settings">插件配置</a>
-			</li>
-		</ul>
-		<div class="txc-container">
-			<div class="txc-grid">
-				<form method="post" id="tencnetcloud-codeVerify-setting-form" action=""
-					data-ajax-url="<?php echo $ajaxUrl ?>">
-					<div id="group-settings" class="group" style="display: block;">
-						<div class="postbox">
-							<div class="inside">
-								<table class="form-table">
-									<tbody>
-										<tr>
-											<th scope="row"><label>
-													<h5>自定义密钥</h5>
-												</label></th>
-											<td>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-secret-custom"
-														value="<?php echo $secretCustom; ?>" <?php if ($secretCustom === '2') {
-																																		echo 'checked';
-																																	} ?>>
-													<label class="custom-control-label"
-														for="codeVerify-option-secret-custom" disabled="disabled">为该插件配置于不同于全局腾讯云密钥的单独密钥</label>
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><label for="codeVerify-option-secret-id">
-													<h5>SecretId</h5>
-												</label></th>
-											<td><input type="password" autocomplete="off" value="<?php echo $secretID; ?>"
-													id="codeVerify-option-secret-id"
-													size="50" <?php if ($secretCustom == '1') {
-																			echo 'disabled ="disabled"';
-																		} ?>>
-												<span id="codeVerify_secret_id_type_exchange"
-													class="dashicons dashicons-hidden"></span>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><label for="codeVerify-option-secret-key">
-													<h5>SecretKey</h5>
-												</label></th>
-											<td><input type="password" autocomplete="off"
-													value="<?php echo $secretKey; ?>"
-													id="codeVerify-option-secret-key"
-													size="50" <?php if ($secretCustom == '1') {
-																			echo 'disabled ="disabled"';
-																		} ?>>
-												<span id="codeVerify_secret_key_type_exchange"
-													class="dashicons dashicons-hidden"></span>
-												<p class="description">访问 <a href="https://console.cloud.tencent.com/cam/user/userType"
-														target="_blank">用户列表</a>创建子账号获取SecretId和SecretKey</p>
-											</td>
-										</tr>
+		<div id="post-body">
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" href="javascript:void(0);" id="sub-tab-settings">插件配置</a>
+				</li>
+			</ul>
+			<div class="txc-container">
+				<div class="txc-grid">
+					<form method="post" id="tencnetcloud-codeVerify-setting-form" action=""
+						data-ajax-url="<?php echo $ajaxUrl ?>">
+						<div id="group-settings" class="group" style="display: block;">
+							<div class="postbox">
+								<div class="inside">
+									<table class="form-table">
+										<tbody>
+											<tr>
+												<th scope="row"><label>
+														自定义密钥
+													</label></th>
+												<td>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-secret-custom"
+															value="<?php echo $secretCustom; ?>" <?php if ($secretCustom === '2') {
+																																			echo 'checked';
+																																		} ?>>
+														<label class="custom-control-label"
+															for="codeVerify-option-secret-custom" disabled="disabled">为该插件配置于不同于全局腾讯云密钥的单独密钥</label>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="codeVerify-option-secret-id">
+														SecretId
+													</label></th>
+												<td><input type="password" autocomplete="off" value="<?php echo $secretID; ?>"
+														id="codeVerify-option-secret-id"
+														size="50" <?php if ($secretCustom == '1') {
+																				echo 'disabled ="disabled"';
+																			} ?>>
+													<span id="codeVerify_secret_id_type_exchange"
+														class="dashicons dashicons-hidden"></span>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="codeVerify-option-secret-key">
+														SecretKey
+													</label></th>
+												<td><input type="password" autocomplete="off"
+														value="<?php echo $secretKey; ?>"
+														id="codeVerify-option-secret-key"
+														size="50" <?php if ($secretCustom == '1') {
+																				echo 'disabled ="disabled"';
+																			} ?>>
+													<span id="codeVerify_secret_key_type_exchange"
+														class="dashicons dashicons-hidden"></span>
+													<p class="description">访问 <a href="https://console.cloud.tencent.com/cam/user/userType"
+															target="_blank">用户列表</a>创建子账号获取SecretId和SecretKey</p>
+												</td>
+											</tr>
 
 
-										<tr>
-											<th scope="row"><label for="codeVerify-option_codeAppId">
-													<h5>CaptchaAppId</h5>
-												</label></th>
-											<td><input type="text" name="codeVerify-option_codeAppId" autocomplete="off"
-													value="<?php echo $codeAppId; ?>"
-													id="codeVerify-option_codeAppId" size="30">
-												<p class="description">验证码通用的AppId</p>
-											</td>
-										</tr>
-										<tr>
-											<th scope="row"><label for="codeVerify-option_codeSecretKey">
-													<h5>
-														CaptchaAppSecretKey</h5>
-												</label></th>
-											<td><input type="password" name="codeVerify-option_codeSecretKey"
-													autocomplete="off" value="<?php echo $codeSecretKey; ?>"
-													id="codeVerify-option_codeSecretKey" size="30">
-												<p class="description">访问<a href="https://console.cloud.tencent.com/captcha"
-														target="_blank">CaptchaAppId列表</a>获取
-													CaptchaAppId和CaptchaAppSecretKey或通过"新建验证"创建CaptchaAppId
-												</p>
-											</td>
-										</tr>
+											<tr>
+												<th scope="row"><label for="codeVerify-option_codeAppId">
+														CaptchaAppId
+													</label></th>
+												<td><input type="text" name="codeVerify-option_codeAppId" autocomplete="off"
+														value="<?php echo $codeAppId; ?>"
+														id="codeVerify-option_codeAppId" size="30">
+													<p class="description">验证码通用的AppId</p>
+												</td>
+											</tr>
+											<tr>
+												<th scope="row"><label for="codeVerify-option_codeSecretKey">
+														CaptchaAppSecretKey
+													</label></th>
+												<td><input type="password" name="codeVerify-option_codeSecretKey"
+														autocomplete="off" value="<?php echo $codeSecretKey; ?>"
+														id="codeVerify-option_codeSecretKey" size="30">
+													<p class="description">访问<a href="https://console.cloud.tencent.com/captcha"
+															target="_blank">CaptchaAppId列表</a>获取
+														CaptchaAppId和CaptchaAppSecretKey或通过"新建验证"创建CaptchaAppId
+													</p>
+												</td>
+											</tr>
 
-										<tr>
-											<th scope="row">
-												<label for="codeVerify-option-aidEncrypted">CaptchaAppId 加密校验</label>
-											</th>
-											<td>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-aidEncrypted"
-														value="<?php echo $aidEncryptedOn ?>" <?php if ($aidEncryptedOn === '2') {
-																																		echo 'checked';
-																																	} ?>>
-													<label class="custom-control-label" for="codeVerify-option-aidEncrypted">启用 aidEncrypted（需控制台开启强制校验）</label>
-												</div>
-												<div style="margin-top: 8px;">
-													<input type="number" min="1" max="86400" step="1" id="codeVerify-option-aidEncryptedExpire"
-														value="<?php echo $aidEncryptedExpire; ?>" style="width: 180px;">
-													<span class="description">密文过期时间（秒，最大 86400）</span>
-												</div>
-											</td>
-										</tr>
+											<tr>
+												<th scope="row">
+													<label for="codeVerify-option-aidEncrypted">CaptchaAppId 加密校验</label>
+												</th>
+												<td>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-aidEncrypted"
+															value="<?php echo $aidEncryptedOn ?>" <?php if ($aidEncryptedOn === '2') {
+																																			echo 'checked';
+																																		} ?>>
+														<label class="custom-control-label" for="codeVerify-option-aidEncrypted">启用 aidEncrypted（需控制台开启强制校验）</label>
+													</div>
+													<div style="margin-top: 8px;">
+														<input type="number" min="1" max="86400" step="1" id="codeVerify-option-aidEncryptedExpire"
+															value="<?php echo $aidEncryptedExpire; ?>" style="width: 180px;">
+														<span class="description">密文过期时间（秒，最大 86400）</span>
+													</div>
+												</td>
+											</tr>
 
-										<tr>
-											<th scope="row">
-												<label for="codeVerify-option-sign">验证码启用场景</label>
-											</th>
-											<td>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-login" <?php if ($loginCode === '2') {
-																														echo 'checked';
-																													} ?>>
-													<label class="custom-control-label" for="codeVerify-option-login">是否开启登录验证</label>
-												</div>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-register" <?php if ($registerCode === '2') {
+											<tr>
+												<th scope="row">
+													<label for="codeVerify-option-sign">验证码启用场景</label>
+												</th>
+												<td>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-login" <?php if ($loginCode === '2') {
 																															echo 'checked';
 																														} ?>>
-													<label class="custom-control-label" for="codeVerify-option-register">是否开启注册验证</label>
-												</div>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-lostpassword" <?php if ($lostpasswordCode === '2') {
-																																	echo 'checked';
-																																} ?>>
-													<label class="custom-control-label"
-														for="codeVerify-option-lostpassword">是否开启找回密码验证</label>
-												</div>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-comment" <?php if ($commentCode === '2') {
+														<label class="custom-control-label" for="codeVerify-option-login">是否开启登录验证</label>
+													</div>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-register" <?php if ($registerCode === '2') {
+																																echo 'checked';
+																															} ?>>
+														<label class="custom-control-label" for="codeVerify-option-register">是否开启注册验证</label>
+													</div>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-lostpassword" <?php if ($lostpasswordCode === '2') {
+																																		echo 'checked';
+																																	} ?>>
+														<label class="custom-control-label"
+															for="codeVerify-option-lostpassword">是否开启找回密码验证</label>
+													</div>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-comment" <?php if ($commentCode === '2') {
+																																echo 'checked';
+																															} ?>>
+														<label class="custom-control-label" for="codeVerify-option-comment">是否开启评论验证</label>
+													</div>
+											</tr>
+
+											<tr>
+												<th scope="row">
+													<label for="codeVerify-option-sign">调试</label>
+												</th>
+												<td>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-debug" <?php if ($debugCode === '2') {
 																															echo 'checked';
 																														} ?>>
-													<label class="custom-control-label" for="codeVerify-option-comment">是否开启评论验证</label>
-												</div>
-										</tr>
+														<label class="custom-control-label" for="codeVerify-option-debug">记录错误,异常和警告信息</label>
+													</div>
+												</td>
+											</tr>
 
-										<tr>
-											<th scope="row">
-												<label for="codeVerify-option-sign">调试</label>
-											</th>
-											<td>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-debug" <?php if ($debugCode === '2') {
-																														echo 'checked';
-																													} ?>>
-													<label class="custom-control-label" for="codeVerify-option-debug">记录错误,异常和警告信息</label>
-												</div>
-											</td>
-										</tr>
-
-										<tr id="tr_delete_logfile" style="display:
+											<tr id="tr_delete_logfile" style="display:
                                     <?php
 																		if ($debugCode !== '2') {
 																			echo 'none';
 																		}
 																		?>;">
-											<th scope="row">
-												<label for="codeVerify-option-sign"></label>
-											</th>
-											<td>
-												<div class="">
-													<button id="button_delete_logfile" type="button" class="btn btn-warning">清空调试日志</button>
-												</div>
-												<span id="span_delete_logfile" style="color: red"></span>
-											</td>
-										</tr>
+												<th scope="row">
+													<label for="codeVerify-option-sign"></label>
+												</th>
+												<td>
+													<div class="">
+														<button id="button_delete_logfile" type="button" class="button button-warning">清空调试日志</button>
+													</div>
+													<span id="span_delete_logfile" style="color: red"></span>
+												</td>
+											</tr>
 
-										<tr>
-											<th scope="row">
-												<label for="codeVerify-option-sign">验证码测试</label>
-											</th>
-											<td>
-												<div class="">
-													<input type="button" name="codeVerifyCommentButton" id="codeVerifyButtonCheck" data-appid="<?php
-																																																											echo $codeAppId;
-																																																											?>" class="button" value="人机验证">
-													<input type="button" id="codePassButtonNext" style="display: none;" value="下一步">
-													<input type="button" id="codePassButtonOk" disabled="disabled" style="background-color: green; color: white; display: none;" value="已通过验证">
-													<input type="hidden" id="codeVerifyTicketCheck" name="codeVerifyTicket" value="">
-													<input type="hidden" id="codeVerifyRandstrCheck" name="codeVerifyRandstr" value="">
-												</div>
-												<span id="span_captch_verify" style="color: red"></span>
-											</td>
-										</tr>
+											<tr>
+												<th scope="row">
+													<label for="codeVerify-option-sign">验证码测试</label>
+												</th>
+												<td>
+													<div class="">
+														<input type="button" name="codeVerifyCommentButton" id="codeVerifyButtonCheck" data-appid="<?php
+																																																												echo $codeAppId;
+																																																												?>" class="button button-primary" value="人机验证">
+														<input type="button" id="codePassButtonNext" class="button button-secondary" style="display: none;" value="下一步">
+														<input type="button" id="codePassButtonOk" class="button tcwp-button-success" disabled="disabled" style="display: none;" value="已通过验证">
+														<input type="hidden" id="codeVerifyTicketCheck" name="codeVerifyTicket" value="">
+														<input type="hidden" id="codeVerifyRandstrCheck" name="codeVerifyRandstr" value="">
+													</div>
+													<span id="span_captch_verify" style="color: red"></span>
+												</td>
+											</tr>
 
-										<tr>
-											<th scope="row">
-												<label for="codeVerify-option-codeFree">自定义业务场景</label>
-											</th>
-											<td>
-												<div class="custom-control custom-switch">
-													<input type="checkbox" class="custom-control-input"
-														id="codeVerify-option-codeFree"
-														value="<?php echo $codeFree ?>" <?php if ($codeFree === '2') {
-																															echo 'checked';
-																														} ?>>
-													<label class="custom-control-label" for="codeVerify-option-codeFree">是否自定义业务场景</label>
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+											<tr>
+												<th scope="row">
+													<label for="codeVerify-option-codeFree">自定义业务场景</label>
+												</th>
+												<td>
+													<div class="custom-control custom-switch">
+														<input type="checkbox" class="custom-control-input"
+															id="codeVerify-option-codeFree"
+															value="<?php echo $codeFree ?>" <?php if ($codeFree === '2') {
+																																echo 'checked';
+																															} ?>>
+														<label class="custom-control-label" for="codeVerify-option-codeFree">是否自定义业务场景</label>
+													</div>
+												</td>
+											</tr>
+										</tbody>
+									</table>
 
 
-								<table id="codeVerifyFree" class="table table-hover hidden">
-									<thead>
-										<tr>
-											<th>业务场景</th>
-											<th>应用AppId</th>
-											<th>应用AppSecretKey</th>
-										</tr>
-									</thead>
-									<tbody>
+									<table id="codeVerifyFree" class="table table-hover hidden">
+										<thead>
+											<tr>
+												<th>业务场景</th>
+												<th>应用AppId</th>
+												<th>应用AppSecretKey</th>
+											</tr>
+										</thead>
+										<tbody>
 
-										<tr>
-											<td>登录/注册场景</td>
-											<td>
-												<input type="text" name="codeVerify_option_registerAPPID" autocomplete="off"
-													placeholder="为空则使用通用AppId" value="<?php echo $registerCodeAPPID; ?>"
-													id="codeVerify_option_registerAPPID" size="30">
-											</td>
-											<td>
-												<input type="password" name="codeVerify_option_registerAPPKey"
-													autocomplete="off" placeholder="为空则使用通用AppSecretKey"
-													value="<?php echo $registerCodeKey; ?>"
-													id="codeVerify_option_registerAPPKey" size="30">
-											</td>
-										</tr>
+											<tr>
+												<td>登录/注册场景</td>
+												<td>
+													<input type="text" name="codeVerify_option_registerAPPID" autocomplete="off"
+														placeholder="为空则使用通用AppId" value="<?php echo $registerCodeAPPID; ?>"
+														id="codeVerify_option_registerAPPID" size="30">
+												</td>
+												<td>
+													<input type="password" name="codeVerify_option_registerAPPKey"
+														autocomplete="off" placeholder="为空则使用通用AppSecretKey"
+														value="<?php echo $registerCodeKey; ?>"
+														id="codeVerify_option_registerAPPKey" size="30">
+												</td>
+											</tr>
 
-										<tr>
-											<td>评论场景</td>
-											<td>
-												<input type="text" name="codeVerify_option_commentAPPID" autocomplete="off"
-													placeholder="为空则使用通用AppId" value="<?php echo $commentCodeAPPID; ?>"
-													id="codeVerify_option_commentAPPID" size="30">
-											</td>
-											<td>
-												<input type="password" name="codeVerify_option_commentAPPKey"
-													autocomplete="off" placeholder="为空则使用通用AppSecretKey"
-													value="<?php echo $commentCodeKey; ?>"
-													id="codeVerify_option_commentAPPKey" size="30">
-											</td>
-										</tr>
+											<tr>
+												<td>评论场景</td>
+												<td>
+													<input type="text" name="codeVerify_option_commentAPPID" autocomplete="off"
+														placeholder="为空则使用通用AppId" value="<?php echo $commentCodeAPPID; ?>"
+														id="codeVerify_option_commentAPPID" size="30">
+												</td>
+												<td>
+													<input type="password" name="codeVerify_option_commentAPPKey"
+														autocomplete="off" placeholder="为空则使用通用AppSecretKey"
+														value="<?php echo $commentCodeKey; ?>"
+														id="codeVerify_option_commentAPPKey" size="30">
+												</td>
+											</tr>
 
-										<tr>
-											<td>找回密码场景</td>
-											<td>
-												<input type="text" name="codeVerify_option_lostpasswordAPPID"
-													autocomplete="off" placeholder="为空则使用通用AppId"
-													value="<?php echo $lostpasswordCodeAPPID; ?>"
-													id="codeVerify_option_lostpasswordAPPID" size="30">
-											</td>
-											<td>
-												<input type="password" name="codeVerify_option_lostpasswordAPPKey"
-													autocomplete="off" placeholder="为空则使用通用AppSecretKey"
-													value="<?php echo $lostpasswordCodeKey; ?>"
-													id="codeVerify_option_lostpasswordAPPKey" size="30">
-											</td>
-										</tr>
-									</tbody>
-								</table>
+											<tr>
+												<td>找回密码场景</td>
+												<td>
+													<input type="text" name="codeVerify_option_lostpasswordAPPID"
+														autocomplete="off" placeholder="为空则使用通用AppId"
+														value="<?php echo $lostpasswordCodeAPPID; ?>"
+														id="codeVerify_option_lostpasswordAPPID" size="30">
+												</td>
+												<td>
+													<input type="password" name="codeVerify_option_lostpasswordAPPKey"
+														autocomplete="off" placeholder="为空则使用通用AppSecretKey"
+														value="<?php echo $lostpasswordCodeKey; ?>"
+														id="codeVerify_option_lostpasswordAPPKey" size="30">
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
-					</div>
-			</div>
+				</div>
 
-			<button type="button" id="tencnetcloud-codeVerify-setting-update-button" class="btn btn-primary">保存设置
-			</button>
-			</form>
+				<button type="button" id="tencnetcloud-codeVerify-setting-update-button" class="button button-primary">保存设置
+				</button>
+				</form>
+			</div>
 		</div>
-	</div>
-	<div style="text-align: center;padding-top:56px">
-		<a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/blob/master/README.md" target="_blank">文档中心</a>
-		| <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha" target="_blank">CNB</a>
-		| <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/issues" target="_blank">意见反馈</a>
+		<div style="text-align: center;padding-top:56px">
+			<a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/blob/master/README.md" target="_blank">文档中心</a>
+			| <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha" target="_blank">CNB</a>
+			| <a href="https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha/-/issues" target="_blank">意见反馈</a>
+		</div>
 	</div>
 </div>

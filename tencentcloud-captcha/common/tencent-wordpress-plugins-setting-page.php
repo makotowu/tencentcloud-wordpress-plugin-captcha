@@ -45,16 +45,9 @@ function tencent_wordpress_plugin_common_page() {
             padding-left: 75px
         }
     </style>
-    <div class="wrap">
+    <div class="wrap tcwp-console">
         <div class="bs-docs-section">
             <br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-header ">
-                        <h1 id="forms">腾讯云配置</h1>
-                    </div>
-                </div>
-            </div>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
                     <a id="tencent_wordpress_plugins_home_id" class="nav-link active" data-toggle="tab" href="#tencent_wordpress_plugins_home">插件配置中心</a>
@@ -67,49 +60,51 @@ function tencent_wordpress_plugin_common_page() {
             <div id="myTabContent" class="tab-content">
                 <!-- Tencent Cloud Wordpress Plugins Setting Page-->
                 <div class="tab-pane fade active show" style="padding-left: 20px" id="tencent_wordpress_plugins_home">
-                    <div class="form-group">
-                        <br class="my-4">
-                        <div class="row">
-                            <span class="col-lg-4"><h5>插件功能</h5></span>
-                            <span class="col-lg-1"><h5>版本</h5></span>
-                            <span class="col-lg-1"><h5>状态</h5></span>
-                            <span class="col-lg-2"><h5>操作</h5></span>
-                        </div>
-                        <hr>
+                    <br class="my-4">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>插件功能</th>
+                            <th>版本</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <?php
                         foreach ($tencent_plugins as $path => $plugin) {
-                            echo '<div class="row">';
+                            echo '<tr>';
                             if (isset($plugin['nick_name'])) {
-                                echo '<span class="col-lg-4"><h5>' . $plugin['nick_name'] . '</h5>' . $plugin['Description'] . '</span>';
+                                echo '<td><h5>' . $plugin['nick_name'] . '</h5>' . $plugin['Description'] . '</td>';
                             } else {
-                                echo '<span class="col-lg-4"><h5>' . $plugin['Name'] . '</h5>' . $plugin['Description'] . '</span>';
+                                echo '<td><h5>' . $plugin['Name'] . '</h5>' . $plugin['Description'] . '</td>';
                             }
 
-                            echo '<span class="col-lg-1 pluging-space-center">' . $plugin['Version'] . '</span>';
+                            echo '<td><div class="pluging-space-center">' . $plugin['Version'] . '</div></td>';
 
                             if (isset($plugin['status']) && $plugin['status'] == 'true') {
-                                echo '<span class="col-lg-1 pluging-space-center"> 开启 </span>';
+                                echo '<td><div class="pluging-space-center">开启</div></td>';
                             } else {
-                                echo '<span class="col-lg-1 pluging-space-center"> 关闭 </span>';
+                                echo '<td><div class="pluging-space-center">关闭</div></td>';
                             }
 
                             if (isset($plugin['activation']) && $plugin['activation'] == 'true') {
-                                echo '<span class="col-lg-2 pluging-space-center">';
+                                echo '<td><div class="pluging-space-center">';
                                 if (isset($plugin['status']) && $plugin['status'] == 'true') {
                                     echo '<a type="button" class="btn btn-primary" href="' . $plugin['href'] . '">配置</a>';
-                                    echo '<button title="' . $plugin['plugin_dir'] .'" id="button_close_tencent_plugin_'. $plugin['Name'] .'"  name="'. $plugin['Name'] .'" type="button" class="btn btn-primary plugin-button-close">关闭</button>';
+                                    echo '<button title="' . $plugin['plugin_dir'] . '" id="button_close_tencent_plugin_' . $plugin['Name'] . '"  name="' . $plugin['Name'] . '" type="button" class="btn btn-primary plugin-button-close">关闭</button>';
                                 } else {
-                                    echo '<button title="' . $plugin['plugin_dir'] .'" id="button_open_tencent_plugin_'. $plugin['Name'] .'"  name="'. $plugin['Name'] .'" type="button" class="btn btn-primary">开启</button>';
+                                    echo '<button title="' . $plugin['plugin_dir'] . '" id="button_open_tencent_plugin_' . $plugin['Name'] . '"  name="' . $plugin['Name'] . '" type="button" class="button button-primary">开启</button>';
                                 }
-                                echo '</span>';
+                                echo '</div></td>';
                             } else {
-                                echo  '<span class="col-lg-1 pluging-space-center"><button type="button" disabled class="btn btn-primary">安装</button></span>';
+                                echo '<td><div class="pluging-space-center"><button type="button" disabled class="button button-primary">安装</button></div></td>';
                             }
-                            echo '</div>';
-                            echo '<hr class="my-4">';
+                            echo '</tr>';
                         }
                         ?>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- Tencent Could Common SecretId and SecretKey Setting Page-->
@@ -164,7 +159,7 @@ function tencent_wordpress_plugin_common_page() {
                         </div>
                     </div>
 
-                    <button id="button_twp_common_secret_save" type="button" class="btn btn-primary">保存配置</button>
+                    <button id="button_twp_common_secret_save" type="button" class="button button-primary">保存配置</button>
                     <span id="span_twp_common_secret_save" class="invalid-feedback offset-lg-2"></span>
                 </div>
             </div>

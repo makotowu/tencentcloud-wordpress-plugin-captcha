@@ -244,7 +244,11 @@ class TencentCloudCaptchaActions
 
 	public function tencentCaptchaLoadCssForPage()
 	{
-		wp_enqueue_style('codeVerify_admin_css', TENCENT_WORDPRESS_CAPTCHA_CSS_DIR . 'bootstrap.min.css');
+		$consoleVer = self::assetVersion('css/console-pack.css');
+		$adminVer = self::assetVersion('css/back_admin_style.css');
+
+		wp_enqueue_style('tcwp_console_pack', TENCENT_WORDPRESS_CAPTCHA_CSS_DIR . 'console-pack.css', array(), $consoleVer);
+		wp_enqueue_style('tcwp_admin_style', TENCENT_WORDPRESS_CAPTCHA_CSS_DIR . 'back_admin_style.css', array('tcwp_console_pack'), $adminVer);
 	}
 
 	/**
