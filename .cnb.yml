@@ -18,7 +18,7 @@ main:
         - name: auto-tag
           image: cnbcool/git-auto-tag:latest
           settings:
-            tagFormat: v${version}  # 版本号格式（如 v1.0.0）
+            tagFormat: v\${version}  # 版本号格式（如 v1.0.0）
             branch: main           # 基于 main 分支生成 Tag
             repoUrlHttps: https://github.com/makotowu/tencentcloud-wordpress-plugin-captcha.git  # 目标仓库 HTTPS 地址
             releaseRules: |        # 自定义版本增长规则
