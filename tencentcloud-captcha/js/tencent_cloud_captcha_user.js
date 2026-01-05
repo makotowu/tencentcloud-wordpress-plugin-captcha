@@ -149,6 +149,76 @@
 		document.querySelectorAll('[data-tencentcloud-captcha="verify"]').forEach(bindVerifyButton);
 	}
 
+	function bindWpLoginFormSubmit(formEl) {
+		if (!formEl || formEl.dataset.tencentcloudCaptchaSubmitBound === '1') return;
+		formEl.dataset.tencentcloudCaptchaSubmitBound = '1';
+
+		formEl.addEventListener('submit', function (e) {
+			if (formEl.dataset.tencentcloudCaptchaSubmitting === '1') return;
+
+			var verifyBtn = formEl.querySelector('#codeVerifyButton, [data-tencentcloud-captcha="verify"]');
+			if (!verifyBtn) return;
+
+			var ticketEl = formEl.querySelector('input[name="codeVerifyTicket"]') || formEl.querySelector('#codeVerifyTicket');
+			var randEl = formEl.querySelector('input[name="codeVerifyRandstr"]') || formEl.querySelector('#codeVerifyRandstr');
+			var hasToken = !!(ticketEl && randEl && ticketEl.value && randEl.value);
+			if (hasToken) return;
+
+			e.preventDefault();
+			try { e.stopImmediatePropagation(); } catch (err) { }
+
+			var appId = verifyBtn.getAttribute('data-appid');
+			if (!appId) return;
+
+			var config = window.TencentCloudCaptchaConfig || {};
+			var scene = detectScene(verifyBtn, formEl);
+			var options = {};
+			if (config && config.aidEncrypted && config.aidEncrypted[scene]) {
+				options.aidEncrypted = String(config.aidEncrypted[scene]);
+			}
+			var enableDarkMode = getEnableDarkMode(config, verifyBtn);
+			if (typeof enableDarkMode !== 'undefined') {
+				options.enableDarkMode = enableDarkMode;
+			}
+
+			if (ticketEl) ticketEl.value = '';
+			if (randEl) randEl.value = '';
+
+			function showCaptcha() {
+				if (typeof TencentCaptcha === 'undefined') {
+					return;
+				}
+				var captcha = Object.keys(options).length ? new TencentCaptcha(appId, function (res) {
+					if (res && res.ret == 0) {
+						if (ticketEl) ticketEl.value = res.ticket;
+						if (randEl) randEl.value = res.randstr;
+						try { formEl.dataset.tencentcloudCaptchaSubmitting = '1'; } catch (err) { }
+						try { formEl.submit(); } catch (err) { }
+					}
+				}, options) : new TencentCaptcha(appId, function (res) {
+					if (res && res.ret == 0) {
+						if (ticketEl) ticketEl.value = res.ticket;
+						if (randEl) randEl.value = res.randstr;
+						try { formEl.dataset.tencentcloudCaptchaSubmitting = '1'; } catch (err) { }
+						try { formEl.submit(); } catch (err) { }
+					}
+				});
+				captcha.show();
+			}
+
+			ensureCaptchaSdk(showCaptcha);
+		}, true);
+	}
+
+	function initWpLoginForms() {
+		var lf = document.getElementById('loginform');
+		var rf = document.getElementById('registerform');
+		var pf = document.getElementById('lostpasswordform');
+		if (lf) bindWpLoginFormSubmit(lf);
+		if (rf) bindWpLoginFormSubmit(rf);
+		if (pf) bindWpLoginFormSubmit(pf);
+	}
+
 	var sdkLoading = false;
 	var sdkQueue = [];
 
@@ -210,6 +280,7 @@
 
 	function init() {
 		initLegacyButtons();
+		initWpLoginForms();
 	}
 
 	try { window.TencentCloudCaptchaRunInit = init; } catch (e) { }

@@ -53,6 +53,20 @@ class TencentCloudCaptchaActions
 	const TENCENT_WORDPRESS_CAPTCHA_AID_ENCRYPTED_EXPIRE = 'aid_encrypted_expire';
 	const TENCENT_WORDPRESS_CAPTCHA_PLUGIN_TYPE = 'captcha';
 
+	private static function renderVerifyButtons($captchaAppId, $verifyText = '验证', $passedText = '已通过验证', $hidden = false)
+	{
+		$appId = function_exists('esc_attr') ? esc_attr($captchaAppId) : $captchaAppId;
+		$verifyText = function_exists('esc_attr') ? esc_attr($verifyText) : $verifyText;
+		$passedText = function_exists('esc_attr') ? esc_attr($passedText) : $passedText;
+		$hiddenStyle = $hidden ? 'display:none;' : '';
+		return '<p>
+            <input type="button" name="codeVerifyButton" id="codeVerifyButton" data-tencentcloud-captcha="verify" data-appid="' . $appId . '" class="button" value="' . $verifyText . '" style="' . $hiddenStyle . 'width: 100%;margin-bottom: 16px;height:40px;">
+             <input type="button" data-tencentcloud-captcha="passed" id="codePassButton" disabled="disabled" style="' . $hiddenStyle . 'background-color: green;color: white;width: 100%;margin-bottom: 16px;height:40px" value="' . $passedText . '"  >
+            <input type="hidden" id="codeVerifyTicket" name="codeVerifyTicket" value="">
+            <input type="hidden" id="codeVerifyRandstr" name="codeVerifyRandstr" value="">
+            </p>';
+	}
+
 	public static function tencentCaptchaSetingNotice()
 	{
 		if (
@@ -88,13 +102,7 @@ class TencentCloudCaptchaActions
 				$captchaAppId = sanitize_text_field($captchaOptions[self::TENCENT_WORDPRESS_CAPTCHA_REGISTER_APP_ID])
 					?: $captchaOptions[self::TENCENT_WORDPRESS_CAPTCHA_APP_ID];
 			}
-			echo '<p>
-            <label for="codeVerifyButton">我不是人机</label>
-            <input type="button" name="codeVerifyButton" id="codeVerifyButton" data-appid="' . $captchaAppId . '" class="button" value="验证" style="width: 100%;margin-bottom: 16px;height:40px;">
-             <input type="button" id="codePassButton" disabled="disabled" style="background-color: green;color: white;width: 100%;margin-bottom: 16px;height:40px" value="已通过验证"  >
-            <input type="hidden" id="codeVerifyTicket" name="codeVerifyTicket" value="">
-            <input type="hidden" id="codeVerifyRandstr" name="codeVerifyRandstr" value="">
-            </p>';
+			echo self::renderVerifyButtons($captchaAppId, '验证', '已通过验证', true);
 		}
 	}
 
@@ -115,13 +123,7 @@ class TencentCloudCaptchaActions
 			} else {
 				$codAppId = sanitize_text_field($CodeVerifyOptions[self::TENCENT_WORDPRESS_CAPTCHA_REGISTER_APP_ID]) ?: $CodeVerifyOptions[self::TENCENT_WORDPRESS_CAPTCHA_APP_ID];
 			}
-			echo '<p>
-            <label for="codeVerifyButton">我不是人机</label>
-            <input type="button" name="codeVerifyButton" id="codeVerifyButton" data-appid="' . $codAppId . '" class="button" value="验证" style="width: 100%;margin-bottom: 16px;height:40px;">
-            <input type="button" id="codePassButton" disabled="disabled" style="background-color: green;color: white;width: 100%;margin-bottom: 16px;height:40px" value="已通过验证"  >
-            <input type="hidden" id="codeVerifyTicket" name="codeVerifyTicket" value="">
-            <input type="hidden" id="codeVerifyRandstr" name="codeVerifyRandstr" value="">
-            </p>';
+			echo self::renderVerifyButtons($codAppId, '验证', '已通过验证', true);
 		}
 	}
 
@@ -169,13 +171,7 @@ class TencentCloudCaptchaActions
 			} else {
 				$codAppId = sanitize_text_field($CodeVerifyOptions[self::TENCENT_WORDPRESS_CAPTCHA_LOSTPASSWORD_APP_ID]) ?: $CodeVerifyOptions[self::TENCENT_WORDPRESS_CAPTCHA_APP_ID];
 			}
-			echo '<p>
-            <label for="codeVerifyButton">我不是人机</label>
-            <input type="button" name="codeVerifyButton" id="codeVerifyButton" data-appid="' . $codAppId . '" class="button" value="验证" style="width: 100%;margin-bottom: 16px;height:40px;">
-            <input type="button" id="codePassButton" disabled="disabled" style="background-color: green;color: white;width: 100%;margin-bottom: 16px;height:40px" value="已通过验证"  >
-            <input type="hidden" id="codeVerifyTicket" name="codeVerifyTicket" value="">
-            <input type="hidden" id="codeVerifyRandstr" name="codeVerifyRandstr" value="">
-            </p>';
+			echo self::renderVerifyButtons($codAppId, '验证', '已通过验证', true);
 		}
 	}
 
