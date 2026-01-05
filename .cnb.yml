@@ -10,4 +10,5 @@ main:
             auth_type: https
             username: ${GIT_USERNAME}
             password: ${GIT_ACCESS_TOKEN}
+            branch: main
             sync_mode: rebase
