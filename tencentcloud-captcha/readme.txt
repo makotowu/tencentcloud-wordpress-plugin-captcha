@@ -4,7 +4,7 @@ Contributors: Tencent, makotowu
 Tags:tencent,tencentcloud,qcloud,春雨,腾讯云CAPTCHA,腾讯云验证码,腾讯云,验证码
 Requires at least: 5.5
 Tested up to: 5.8
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License:Apache 2.0
 License URI:http://www.apache.org/licenses/LICENSE-2.0
 
@@ -42,6 +42,10 @@ License URI:http://www.apache.org/licenses/LICENSE-2.0
 5. screenshot-5.png
 
 == Changelog ==
+= 1.0.6 =
+* 1、新增 Argon / Sakurairo / Puock 主题评论验证码适配
+* 2、后台配置界面样式升级为腾讯云风格
+
 = 1.0.5 =
 * 1、新增主题适配机制（Theme Adapters），用于处理自定义评论表单、AJAX 提交、PJAX 导航等场景
 * 2、新增 Oyiso 主题适配：评论验证码支持 PJAX / History 导航与自定义评论表单提交流程

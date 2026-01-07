@@ -4,7 +4,7 @@
  * Plugin Name: tencentcloud-captcha
  * Plugin URI:  https://cnb.cool/makotowu/tencentcloud-wordpress-plugin-captcha
  * Description: 通过腾讯云验证码提供立体、全面的人机验证。
- * Version: 1.0.5
+ * Version: 1.0.6
  * Author: makotowu
  * Author URI: https://cnb.cool/u/makotowu
  * Copyright (C) 2020 Tencent Cloud.
@@ -23,7 +23,7 @@
  */
 
 
-define('TENCENT_WORDPRESS_CAPTCHA_VERSION', '1.0.5');
+define('TENCENT_WORDPRESS_CAPTCHA_VERSION', '1.0.6');
 define('TENCENT_WORDPRESS_CAPTCHA_DIR', plugin_dir_path(__FILE__));
 define('TENCNET_WORDPRESS_CAPTCHA_BASENAME', plugin_basename(__FILE__));
 define('TENCENT_WORDPRESS_CAPTCHA_NAME', 'tencentcloud-captcha');

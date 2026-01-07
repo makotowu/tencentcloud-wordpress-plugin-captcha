@@ -18,6 +18,11 @@
 
 ## 更新日志
 
+### v1.0.6 (2026.01.07)
+
+- 新增 Argon / Sakurairo / Puock 主题评论验证码适配
+- 后台配置界面样式升级为腾讯云风格
+
 ### v1.0.5 (2026.01.05)
 
 - Oyiso 主题评论验证码适配：支持 PJAX / History 导航场景与自定义评论表单提交
@@ -32,7 +37,7 @@ tencentcloud-captcha 插件是腾讯云研发并面向 WordPress 站长提供的
 | --- | --- |
 | 中文名称 | 腾讯云验证码（CAPTCHA）插件 |
 | 英文名称 | tencentcloud-captcha |
-| 最新版本 | v1.0.5 (2026.01.05) |
+| 最新版本 | v1.0.6 (2026.01.07) |
 | 适用平台 | [WordPress](https://wordpress.org/) |
 | 适用产品 | [腾讯云验证码](https://cloud.tencent.com/document/product/1110/36334) |
 
@@ -108,6 +113,7 @@ tencentcloud-captcha 插件是腾讯云研发并面向 WordPress 站长提供的
 
 - 已支持主题的适配说明与排查：见 [theme-adapters/README.md](./tencentcloud-captcha/theme-adapters/README.md)
 - Oyiso 主题适配说明：见 [oyiso/README.md](./tencentcloud-captcha/theme-adapters/oyiso/README.md)
+- Puock 主题适配说明：见 [puock/README.md](./tencentcloud-captcha/theme-adapters/puock/README.md)
 - 如何编写新的主题适配器：见 [theme-adapters/how-to-write-theme-adapter.md](./tencentcloud-captcha/theme-adapters/how-to-write-theme-adapter.md)
 
 ## 常见问题

@@ -8,9 +8,6 @@
 		try { template = String(config.template || '').toLowerCase(); } catch (e) { template = ''; }
 		var targets = {
 			'sakurairo': 1,
-			'sakurairo-main': 1,
-			'sakurairo_main': 1,
-			'sakurairo-master': 1,
 			'sakurairo-theme': 1
 		};
 		return !!(targets[theme] || targets[template]);

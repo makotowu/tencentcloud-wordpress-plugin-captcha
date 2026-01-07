@@ -10,9 +10,6 @@ if (!function_exists('tencentcloud_captcha_theme_is_sakurairo')) {
 		$template = isset($context['template']) ? strtolower(strval($context['template'])) : '';
 		$targets = array(
 			'sakurairo',
-			'sakurairo-main',
-			'sakurairo_main',
-			'sakurairo-master',
 			'sakurairo-theme',
 		);
 		return in_array($theme, $targets, true) || in_array($template, $targets, true);
@@ -83,9 +80,6 @@ add_filter('comment_form_submit_button', function ($submitButton) {
 	$templateSlug = strtolower(strval($theme->get_template()));
 	$targets = array(
 		'sakurairo',
-		'sakurairo-main',
-		'sakurairo_main',
-		'sakurairo-master',
 		'sakurairo-theme',
 	);
 	if (!in_array($themeSlug, $targets, true) && !in_array($templateSlug, $targets, true)) {

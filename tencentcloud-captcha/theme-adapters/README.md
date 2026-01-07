@@ -18,9 +18,21 @@
 
 ## 2. 已支持主题
 
+### Argon
+
+详见：`argon/README.md`
+
 ### Oyiso
 
 详见：`oyiso/README.md`
+
+### Puock
+
+详见：`puock/README.md`
+
+### Sakurairo
+
+详见：`sakurairo/README.md`
 
 ## 3. 常见问题排查
 
